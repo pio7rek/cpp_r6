@@ -7,23 +7,40 @@
 #include "std_lib_facilities.h"
 
 int main() {
-	cout << "Proszê wpisz wyra¿enie (na razie tylko + lub -): ";
+	cout << "Proszê wpisz wyra¿enie (obs³uga +, -, *, /, x - aby zakonczyc): ";
 	int lval = 0;
 	int rval;
-	char op;
-	int res;
-
-	cin >> lval >> op >> rval;
-
-	if (op=='+') {
-		res = lval+rval;
+	cin >> lval;
+	if(!cin) {
+		error("brak pierwszej liczby");
 	}
-	else if (op=='-') {
-		res = lval - rval;
-	}
+	for (char op; cin >> op;) {
+		if (op!='x') {
+			cin >> rval;
+		}
+		if (!cin) {
+			error("brak drugiej liczby");
+		}
+		switch (op) {
+		case '+':
+			lval +=rval;
+			break;
+		case '-':
+			lval -=rval;
+			break;
+		case '*':
+			lval *=rval;
+			break;
+		case '/':
+			lval /=rval;
+			break;
+		default:
+			cout << "Wynik: " << lval << '\n';
+			return 0;
+		}
 
-	cout << "Wynik: " << res << '\n';
-	return 0;
+	}
+	error("Z³e wyra¿enie!");
 }
 
 
