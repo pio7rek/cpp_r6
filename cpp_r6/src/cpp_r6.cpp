@@ -7,7 +7,22 @@
 #include "std_lib_facilities.h"
 
 int main() {
-	cout << "hello world!\n";
+	cout << "Proszê wpisz wyra¿enie (na razie tylko + lub -): ";
+	int lval = 0;
+	int rval;
+	char op;
+	int res;
+
+	cin >> lval >> op >> rval;
+
+	if (op=='+') {
+		res = lval+rval;
+	}
+	else if (op=='-') {
+		res = lval - rval;
+	}
+
+	cout << "Wynik: " << res << '\n';
 	return 0;
 }
 
